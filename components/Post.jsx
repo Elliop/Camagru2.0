@@ -36,6 +36,10 @@ const Post = ({ id, username, userImg, img, caption }) => {
       </div>
 
       {/* Caption */}
+      <p className="p-5 truncate">
+        <span className="font-bold mr-1">{username} </span>
+        {caption}
+      </p>
 
       {/* Comments */}
 
