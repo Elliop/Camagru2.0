@@ -8,8 +8,11 @@ import {
   MenuIcon,
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
@@ -40,24 +43,31 @@ const Header = () => {
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
           <HomeIcon className="navBtn" />
 
-          <div className="relative navBtn">
-            <PaperAirplaneIcon className="navBtn rotate-45" />
-            <div
-              className="absolute -top-1 -right-2 text-xs w-5 h-5 
-            bg-red-500 rounded-full flex items-center justify-center
-            animate-pulse text-white"
-            >
-              3
-            </div>
-          </div>
-          <PlusCircleIcon className="navBtn" />
-          <UserGroupIcon className="navBtn" />
-          <HeartIcon className="navBtn" />
-          <img
-            src="https://scontent-mxp1-1.xx.fbcdn.net/v/t1.6435-9/81119367_180833642971267_6901131851822268416_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeF1l4AibOocnEPSxrBafps1XuEIe1dx-1Be4Qh7V3H7UNzTONhZJ_umPUBDtOgbslZTx41H1B_VkDlD_SyZcRln&_nc_ohc=sb-EJ16Oy_8AX-Prpa8&_nc_oc=AQn9MRlqK8vrkO1eqKwhRN5Gvb_9n9O9RC6KUaCX50Oekbad_766qtpLpehMU9Gvy3Q&tn=14moef0so3wb2XL5&_nc_ht=scontent-mxp1-1.xx&oh=10af5d03832d63dd8515527039bf9b74&oe=619E3185"
-            alt="Profile pic"
-            className="h-10 rounded-full cursor-pointer"
-          />
+          {session ? (
+            <>
+              <div className="relative navBtn">
+                <PaperAirplaneIcon className="navBtn rotate-45" />
+                <div
+                  className="absolute -top-1 -right-2 text-xs w-5 h-5 
+              bg-red-500 rounded-full flex items-center justify-center
+              animate-pulse text-white"
+                >
+                  3
+                </div>
+              </div>
+              <PlusCircleIcon className="navBtn" />
+              <UserGroupIcon className="navBtn" />
+              <HeartIcon className="navBtn" />
+              <img
+                onClick={signOut}
+                src={session?.user?.image}
+                alt="Profile pic"
+                className="h-10 rounded-full cursor-pointer"
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Sign In</button>
+          )}
         </div>
       </div>
     </div>
