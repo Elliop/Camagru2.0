@@ -166,7 +166,7 @@ const Modal = () => {
                     disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
                     onClick={uploadPost}
                   >
-                    {loading ? "Uloading..." : "Upload Post"}
+                    {loading ? "Uploading..." : "Upload Post"}
                   </button>
                 </div>
               </div>
