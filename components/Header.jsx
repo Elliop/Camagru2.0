@@ -8,7 +8,7 @@ import {
   MenuIcon,
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
@@ -73,7 +73,6 @@ const Header = () => {
               <UserGroupIcon className="navBtn" />
               <HeartIcon className="navBtn" />
               <img
-                onClick={signOut}
                 src={session?.user?.image}
                 alt="Profile pic"
                 className="h-10 w-10 rounded-full cursor-pointer"
