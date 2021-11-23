@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Infos from "../components/profille/Infos";
 import { useSession } from "next-auth/react";
+import MyPosts from "../components/profille/MyPosts";
 
 const profile = () => {
   const { data: session } = useSession();
@@ -9,11 +10,13 @@ const profile = () => {
     <div>
       <Header />
       {session ? (
-        <Infos />
+        <>
+          <Infos />
+          <MyPosts />
+        </>
       ) : (
-        // Posts
         <div className="flex justify-center mt-14">
-          You have to login first!
+          <p>You have to login first!</p>
         </div>
       )}
     </div>
