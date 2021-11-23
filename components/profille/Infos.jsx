@@ -8,7 +8,7 @@ const Infos = () => {
         <img
           src={session?.user?.image}
           alt="Profile pic"
-          className="h-32 w-32 rounded-full cursor-pointer"
+          className="h-32 w-32 rounded-full p-[1.5px] border-gray-300 border-2"
         />
       </div>
       <div className="col-span-2 flex mt-4 justify-between">
