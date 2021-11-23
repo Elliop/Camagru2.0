@@ -76,6 +76,7 @@ const Header = () => {
                 src={session?.user?.image}
                 alt="Profile pic"
                 className="h-10 w-10 rounded-full cursor-pointer"
+                onClick={() => router.push("/profile")}
               />
             </>
           ) : (
