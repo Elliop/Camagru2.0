@@ -80,7 +80,7 @@ const Header = () => {
               />
             </>
           ) : (
-            <button onClick={signIn}>Sign In</button>
+            <button onClick={() => signIn()}>Sign In</button>
           )}
         </div>
       </div>
