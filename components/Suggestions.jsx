@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
-import faker from "faker";
 
 const Suggestions = () => {
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    const suggestions = [...Array(5)].map((_, i) => ({
-      ...faker.helpers.contextualCard(),
-      id: i,
-    }));
-    setSuggestions(suggestions);
+    const fetchProfileSuggestions = async () => {
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=5");
+        const data = await response.json();
+        const suggestions = data.results.map((user, index) => ({
+          avatar: user.picture.large,
+          username: user.login.username,
+          state: user.location.state,
+          id: index,
+        }));
+        setSuggestions(suggestions);
+      } catch (error) {
+        console.error("Error fetching profile suggestions:", error);
+      }
+    };
+
+    fetchProfileSuggestions();
   }, []);
 
   return (
@@ -30,9 +41,7 @@ const Suggestions = () => {
           />
           <div className="flex-1 ml-4">
             <h2 className="font-semibold text-sm">{profile.username}</h2>
-            <h3 className="text-xs text-gray-400">
-              Works at {profile.company.name}{" "}
-            </h3>
+            <h3 className="text-xs text-gray-400">From {profile.state} </h3>
           </div>
           <button className="text-blue-400 text-xs font-bold">Follow</button>
         </div>
