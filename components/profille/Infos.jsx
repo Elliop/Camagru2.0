@@ -3,30 +3,32 @@ import { useSession } from "next-auth/react";
 const Infos = () => {
   const { data: session } = useSession();
   return (
-    <div className="grid grid-rows-3 grid-flow-col gap-4 justify-center mt-14 shadow-sm">
-      <div className="row-span-3">
+    <div className="flex w-full justify-center items-center py-14 shadow-sm">
+      <div className="flex justify-between items-center max-w-4xl">
         <img
           src={session?.user?.image}
           alt="Profile pic"
-          className="h-32 w-32 rounded-full p-[1.5px] border-gray-300 border-2"
+          className="h-16 w-16 md:h-32 md:w-32 rounded-full p-[1.5px] border-gray-300 border-2"
         />
-      </div>
-      <div className="col-span-2 flex mt-4 justify-between">
-        <h1 className="text-xl font-bold ml-14">{session?.user?.username}</h1>
-        <button className="text-lg font-medium border-2 px-2 py-1 rounded-md">
-          Edit Profile
-        </button>
-      </div>
-      <div className="row-span-2 col-span-2 flex justify-between">
-        <p className="ml-14 my-4 cursor-pointer text-lg">
-          <span className="font-bold mr-2">0</span>Posts
-        </p>
-        <p className="ml-14 my-4 cursor-pointer text-lg">
-          <span className="font-bold mr-2">786</span>followers
-        </p>
-        <p className="ml-14 my-4 cursor-pointer text-lg">
-          <span className="font-bold mr-2">124</span>following
-        </p>
+        <div className="pl-3 md:pl-14">
+          <div className="flex mt-4 justify-start md:justify-between">
+            <h1 className="text-xl font-bold">{session?.user?.username}</h1>
+            <button className="text-lg ml-20 md:ml-0 font-medium border-2 px-2 py-1 rounded-md">
+              Edit Profile
+            </button>
+          </div>
+          <div className="row-span-2 col-span-2 flex justify-between">
+            <p className="my-4 cursor-pointer text-base md:text-lg mr-4">
+              <span className="font-bold mr-2">0</span>Posts
+            </p>
+            <p className="my-4 cursor-pointer text-base md:text-lg mr-4">
+              <span className="font-bold mr-2">786</span>followers
+            </p>
+            <p className="my-4 cursor-pointer text-base md:text-lg mr-4">
+              <span className="font-bold mr-2">124</span>following
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

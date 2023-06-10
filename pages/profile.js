@@ -7,7 +7,7 @@ const profile = () => {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div className="bg-gray-50 h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide">
       <Header />
       {session ? (
         <>
