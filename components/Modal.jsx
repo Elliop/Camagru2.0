@@ -36,7 +36,7 @@ const Modal = () => {
     });
 
     // 2) Get the post ID for the newly created post
-    console.log("New doc added with ID", docRef.id);
+    // console.log("New doc added with ID", docRef.id);
 
     // 3) Upload the img to firebase storage with the post ID
     // 4) Get a download URL from firebase storage and update the original post with img
