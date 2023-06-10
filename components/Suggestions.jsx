@@ -29,6 +29,25 @@ const Suggestions = () => {
         <h3 className="text-sm font-bold text-gray-400">Suggestions for you</h3>
         <button className="font-semibold text-gray-600">See All</button>
       </div>
+      <div className="flex items-center justify-between mt-3">
+        <img
+          src="https://pbs.twimg.com/profile_images/1399020768713916423/Ln2tk7R9_400x400.jpg"
+          className="w-10 h-10 rounded-full border p-[2px]"
+          alt="profiles"
+        />
+        <div className="flex-1 ml-4">
+          <h2 className="font-semibold text-sm">Elliop_Sh</h2>
+          <h3 className="text-xs text-gray-400">From Morocco</h3>
+        </div>
+        <a
+          href="https://www.instagram.com/elliop_sh/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-400 text-xs font-bold"
+        >
+          Follow
+        </a>
+      </div>
       {suggestions.map((profile) => (
         <div
           key={profile.id}
